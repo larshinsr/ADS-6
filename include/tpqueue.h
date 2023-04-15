@@ -1,9 +1,9 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
-
+#include<string>
 template<typename T, int size>
-class TPQueue { 
+class TPQueue {
  private:
     T* arr;
     int first;
@@ -20,8 +20,7 @@ class TPQueue {
         int i = first;
         int j = last;
         while (i < last) {
-            //чекаем позицию согласно приоритету
-            if (arr[i].prior < value.prior) { 
+            if (arr[i].prior < value.prior) { //чек позиции
                 position = i;
                 break;
             }
