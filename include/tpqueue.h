@@ -1,6 +1,7 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include<string>
 
 template<typename T, int size>
 class TPQueue {
@@ -10,6 +11,7 @@ class TPQueue {
     int first;
     int last;
     int count;
+    
  public:
     TPQueue() : arr(new T[size]), first(0), last(0), count(0) {}
     ~TPQueue() { delete[] arr; }
