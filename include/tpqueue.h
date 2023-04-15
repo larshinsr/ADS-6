@@ -5,13 +5,13 @@
 template<typename T, int size>
 class TPQueue {
   // реализация шаблона очереди с приоритетом на кольцевом буфере 
- private:
+private:
     T* arr;
     int first;
     int last;
     int count;
- 
- public:
+
+public:
     TPQueue() : arr(new T[size]), first(0), last(0), count(0) {}
     ~TPQueue() { delete[] arr; }
     void push(const T& value) {
@@ -21,18 +21,18 @@ class TPQueue {
         int i = first;
         int j = last;
         while (i < last) {
-            if (arr[i].prior < value.prior) {
+            if (arr[i].prior < value.prior) { //чекаем позицию согласно приоритету
                 position = i;
                 break;
             }
-            ++i;
+            i++;
         }
-        while (j < position) {
-            arr[i % size] = arr[(i - 1) % size];
+        while (j > position) {
+            arr[j % size] = arr[(j - 1) % size]; // сдвигаем
+            j--;
         }
-        arr[(position % size)] = value;
-        ++count;
-        ++last;
+        arr[(position % size)] = value; // пихаем
+        last++;
     }
     T& pop() {
         if (0 == count)
